@@ -47,6 +47,7 @@ public class Config {
     public ShardingRuleConfiguration shardingRuleConfiguration(){
 
         TableRuleConfiguration tableRuleConfiguration = new TableRuleConfiguration("t_user","sharding${0}.t_user${0},sharding${1}.t_user${1}");
+        //数据库和表的策略计算
         tableRuleConfiguration.setDatabaseShardingStrategyConfig(new InlineShardingStrategyConfiguration("user_id","sharding${user_id %2}"));
         tableRuleConfiguration.setTableShardingStrategyConfig(new InlineShardingStrategyConfiguration("user_id","t_user${user_id % 2}"));
 

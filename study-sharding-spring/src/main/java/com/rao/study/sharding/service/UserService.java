@@ -15,10 +15,9 @@ public class UserService {
     public void test(){
         for (int i=0;i<10;i++){
             User user = new User();
+            user.setUserId(Long.valueOf(i+1));//如果使用user_id作为分配策略字段,则这里必须要传递值,sharding才能根据这个值,再根据配置的分片策略算法进行数据分发
             user.setUserName("test_"+i);
             userMapper.save(user);
-
-
         }
 
     }
